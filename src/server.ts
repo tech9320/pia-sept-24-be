@@ -1,24 +1,38 @@
 import express from "express";
 import cors from "cors";
+
+import config from "./config/env.config";
+
+import connectDB from "./config/database.config";
+import populateDB from "./data/populateDB";
 import mongoose from "mongoose";
-import config from "./config";
+import ownerController from "./controllers/ownerController";
+import loginController from "./controllers/loginController";
+import companyController from "./controllers/companyController";
+import workerController from "./controllers/workerController";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Establish connection to database
-mongoose.connect("mongodb://127.0.0.1:27017/backend_db");
+// Connect to the database
+connectDB();
 
-const connection = mongoose.connection;
-connection.once("open", () => {
-    console.log("db connection ok");
+// Populate database once connection is established
+mongoose.connection.once("open", async () => {
+    await populateDB();
 });
 
-// Start listening on port 4000
-app.listen(config.BACKEND_PORT, () =>
-    console.log(`Backend server running on port ${config.BACKEND_PORT}`)
-);
+// Routes
+app.get("/owner", ownerController.getOwners);
+app.get("/owner/count", ownerController.getOwnerCount);
+app.get("/worker", workerController.getWorkers);
+app.get("/worker/count", workerController.getWorkerCount);
+app.get("/company", companyController.getCompanies);
+app.get("/login/user", loginController.loginUser);
+app.get("/login/admin", loginController.loginAdmin);
 
-// Test GET route
-app.get("/test", (_, res) => res.send("Backend works!"));
+// Start server
+app.listen(config.BACKEND_PORT, async () => {
+    console.log(`Backend server running on port ${config.BACKEND_PORT}`);
+});
