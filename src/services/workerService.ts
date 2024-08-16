@@ -19,4 +19,19 @@ const countWorkers = async () => {
     return allWorkers.length;
 };
 
-export default { addWorker, listWorkers, getWorker, countWorkers };
+const containsWorkerWithGivenEmail = async (email: string) => {
+    return await workerRepository.containsOwnerWithGivenEmail(email);
+};
+
+const containsWorkerWithGivenUsername = async (username: string) => {
+    return await workerRepository.containsOwnerWithGivenUsername(username);
+};
+
+export default {
+    addWorker,
+    listWorkers,
+    getWorker,
+    countWorkers,
+    containsWorkerWithGivenEmail,
+    containsWorkerWithGivenUsername,
+};

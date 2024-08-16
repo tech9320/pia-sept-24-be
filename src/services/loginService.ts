@@ -3,8 +3,8 @@ import ownerService from "./ownerService";
 import workerService from "./workerService";
 
 const loginUser = async (
-    username: string,
-    password: string
+    username: any,
+    password: any
 ): Promise<{ message: string; data: any }> => {
     const owner = await ownerService.getOwner(username, password);
 
@@ -22,8 +22,8 @@ const loginUser = async (
 };
 
 const loginAdmin = async (
-    username: string,
-    password: string
+    username: any,
+    password: any
 ): Promise<{ message: string; data: any }> => {
     const admin = await adminService.getAdmin(username, password);
 

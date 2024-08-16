@@ -9,7 +9,7 @@ interface IOwner extends Document {
     address: string;
     contactNumber: string;
     email: string;
-    photo: string;
+    photoBitecode: string;
     cardNumber: string;
     __status__: "awaiting" | "approved" | "rejected" | "redacted";
 }
@@ -23,7 +23,7 @@ const ownerSchema: Schema<IOwner> = new Schema({
     address: { type: String, required: true },
     contactNumber: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    photo: { type: String, required: true },
+    photoBitecode: { type: String, required: true },
     cardNumber: { type: String, required: true },
     __status__: {
         type: String,

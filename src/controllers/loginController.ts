@@ -2,7 +2,8 @@ import { Request, Response } from "express";
 import loginService from "../services/loginService";
 
 const loginUser = async (req: Request, res: Response) => {
-    const { username, password } = req.body;
+    const username = req.query.username;
+    const password = req.query.password;
 
     try {
         const { message, data } = await loginService.loginUser(
@@ -11,7 +12,7 @@ const loginUser = async (req: Request, res: Response) => {
         );
         res.json({ message: message, data: data });
     } catch (err) {
-        res.json({ message: err, data: {} });
+        res.json({ message: "error", data: err });
     }
 };
 

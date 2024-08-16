@@ -27,4 +27,19 @@ const getOwner = async (username: string, password: string) => {
     return await ownerRepository.getOwner(username, password);
 };
 
-export default { addOwner, listOwners, getOwner, countActiveOwners };
+const containsOwnerWithGivenEmail = async (email: string) => {
+    return await ownerRepository.containsOwnerWithGivenEmail(email);
+};
+
+const containsOwnerWithGivenUsername = async (username: string) => {
+    return await ownerRepository.containsOwnerWithGivenUsername(username);
+};
+
+export default {
+    addOwner,
+    listOwners,
+    getOwner,
+    countActiveOwners,
+    containsOwnerWithGivenEmail,
+    containsOwnerWithGivenUsername,
+};

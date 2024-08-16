@@ -10,7 +10,7 @@ interface IWorker extends Document {
     address: string;
     contactNumber: string;
     email: string;
-    photo: string;
+    photoBitecode: string;
     company: ICompany["_id"];
 }
 
@@ -23,7 +23,7 @@ const workerSchema: Schema<IWorker> = new Schema({
     address: { type: String, required: true },
     contactNumber: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    photo: { type: String, required: true },
+    photoBitecode: { type: String, required: true },
     company: { type: Schema.Types.ObjectId, ref: "Company", require: true },
 });
 

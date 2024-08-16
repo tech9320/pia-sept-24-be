@@ -3,14 +3,17 @@ import fs from "fs";
 import config from "./config/env.config";
 
 const hashPassword = (password: string): string => {
-    const hash = pbkdf2Sync(password, config.SALT_VALUE, 1000, 64, "sha512");
+    const hash = createHash("sha256").update(password).digest("hex");
 
-    return hash.toString("hex");
+    return hash.toString();
 };
 
 const encodeImageToBase64 = (path: string): string => {
     const imageBuffer = fs.readFileSync(path);
-    return imageBuffer.toString("base64");
+    const imageBitecode = imageBuffer.toString("base64");
+    const fullBitecode = `data:image/png;base64,${imageBitecode}`;
+
+    return fullBitecode;
 };
 
 const getSerbianTime = (

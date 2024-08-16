@@ -13,4 +13,28 @@ const getOwner = async (username: string, password: string) => {
     return await Owner.findOne({ username: username, password: password });
 };
 
-export default { createOwner, getAllOwners, getOwner };
+const containsOwnerWithGivenEmail = async (email: string) => {
+    const owner = await Owner.exists({ email: email });
+
+    if (owner == null) {
+        return false;
+    }
+    return true;
+};
+
+const containsOwnerWithGivenUsername = async (username: string) => {
+    const owner = await Owner.exists({ username: username });
+
+    if (owner == null) {
+        return false;
+    }
+    return true;
+};
+
+export default {
+    createOwner,
+    getAllOwners,
+    getOwner,
+    containsOwnerWithGivenEmail,
+    containsOwnerWithGivenUsername,
+};

@@ -48,7 +48,7 @@ const populateDB = async () => {
                 address: "Neka Tamo 212",
                 contactNumber: "+381 62 029 1252",
                 email: "markomarkovic123@gmail.com",
-                photo: utils.encodeImageToBase64(
+                photoBitecode: utils.encodeImageToBase64(
                     "resources/images/default-avatar.png"
                 ),
                 cardNumber: "5274556649237699",
@@ -63,7 +63,7 @@ const populateDB = async () => {
                 address: "Neka Tamo 214",
                 contactNumber: "+381 66 021 1111",
                 email: "petarkralj12@gmail.com",
-                photo: utils.encodeImageToBase64(
+                photoBitecode: utils.encodeImageToBase64(
                     "resources/images/default-avatar.png"
                 ),
                 cardNumber: "5299598123850531",
@@ -78,7 +78,7 @@ const populateDB = async () => {
                 address: "Lekiceva 12",
                 contactNumber: "+381 65 251 2352",
                 email: "mlekic@gmail.com",
-                photo: utils.encodeImageToBase64(
+                photoBitecode: utils.encodeImageToBase64(
                     "resources/images/default-avatar.png"
                 ),
                 cardNumber: "5301099244177843",
@@ -93,7 +93,7 @@ const populateDB = async () => {
                 address: "Terazijska 12",
                 contactNumber: "+381 61 221 9211",
                 email: "urosuskokovic24@gmail.com",
-                photo: utils.encodeImageToBase64(
+                photoBitecode: utils.encodeImageToBase64(
                     "resources/images/default-avatar.png"
                 ),
                 cardNumber: "5297937189565512",
@@ -108,7 +108,7 @@ const populateDB = async () => {
                 address: "Majska 26c",
                 contactNumber: "+381 60 231 1291",
                 email: "majaparezanin212@gmail.com",
-                photo: utils.encodeImageToBase64(
+                photoBitecode: utils.encodeImageToBase64(
                     "resources/images/default-avatar.png"
                 ),
                 cardNumber: "5294459278224888",
@@ -220,7 +220,7 @@ const populateDB = async () => {
                 address: "Brdska 21A",
                 contactNumber: "+381 63 214 212 9271",
                 email: "pedjatheboy12@gmail.com",
-                photo: utils.encodeImageToBase64(
+                photoBitecode: utils.encodeImageToBase64(
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[0].id,
@@ -234,7 +234,7 @@ const populateDB = async () => {
                 address: "Padinsk 13",
                 contactNumber: "+381 62 114 212 9275",
                 email: "ljigavac12@gmail.com",
-                photo: utils.encodeImageToBase64(
+                photoBitecode: utils.encodeImageToBase64(
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[0].id,
@@ -248,7 +248,7 @@ const populateDB = async () => {
                 address: "Nizbrdska 12",
                 contactNumber: "+381 66 122 222 3333",
                 email: "julijanizbrda1@gmail.com",
-                photo: utils.encodeImageToBase64(
+                photoBitecode: utils.encodeImageToBase64(
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[0].id,
@@ -262,7 +262,7 @@ const populateDB = async () => {
                 address: "Ulica ruža 122",
                 contactNumber: "+381 61 302 251 5214",
                 email: "smarkovic25@yahoo.com",
-                photo: utils.encodeImageToBase64(
+                photoBitecode: utils.encodeImageToBase64(
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[1].id,
@@ -276,7 +276,7 @@ const populateDB = async () => {
                 address: "Ulica veselja 21",
                 contactNumber: "+381 61 351 321 3212",
                 email: "spopovic12@yahoo.com",
-                photo: utils.encodeImageToBase64(
+                photoBitecode: utils.encodeImageToBase64(
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[1].id,
@@ -290,7 +290,7 @@ const populateDB = async () => {
                 address: "Ulica veselja 25",
                 contactNumber: "+381 61 350 341 3201",
                 email: "draganp212@gmail.com",
-                photo: utils.encodeImageToBase64(
+                photoBitecode: utils.encodeImageToBase64(
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[2].id,
@@ -304,7 +304,7 @@ const populateDB = async () => {
                 address: "Ugostiteljsko naselje 21A",
                 contactNumber: "+381 64 021 212 3524",
                 email: "msicim123@gmail.com",
-                photo: utils.encodeImageToBase64(
+                photoBitecode: utils.encodeImageToBase64(
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[2].id,
