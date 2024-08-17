@@ -31,6 +31,7 @@ app.post("/owner", ownerController.createOwner);
 app.get("/owner/count", ownerController.getOwnerCount);
 app.put("/owner/deactivate", ownerController.deactivateOwner);
 app.put("/owner", ownerController.updateOwner);
+app.put("/owner/status", ownerController.updateOwnerStatus);
 app.get("/worker", workerController.getWorkers);
 app.get("/worker/count", workerController.getWorkerCount);
 app.put("/worker/deactivate", workerController.deactivateWorker);

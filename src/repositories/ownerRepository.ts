@@ -57,6 +57,15 @@ const updatePassword = async (userId: string, newPassword: string) => {
     return result;
 };
 
+const updateOwnerStatus = async (userId: string, __status__: string) => {
+    const result = await Owner.updateMany(
+        { _id: userId },
+        { __status__: __status__ }
+    );
+
+    return result;
+};
+
 const deactivateOwner = async (userId: string) => {
     const result = await Owner.updateMany(
         { _id: userId },
@@ -75,4 +84,5 @@ export default {
     updatePassword,
     updateOwner,
     deactivateOwner,
+    updateOwnerStatus,
 };

@@ -47,6 +47,10 @@ const updatePassword = async (userId: string, newPassword: string) => {
     return await ownerRepository.updatePassword(userId, newPassword);
 };
 
+const updateOwnerStatus = async (userId: string, __status__: string) => {
+    return await ownerRepository.updateOwnerStatus(userId, __status__);
+};
+
 export default {
     addOwner,
     listOwners,
@@ -57,4 +61,5 @@ export default {
     updatePassword,
     updateOwner,
     deactivateOwner,
+    updateOwnerStatus,
 };

@@ -110,10 +110,21 @@ const updateOwner = async (req: Request, res: Response) => {
     }
 };
 
+const updateOwnerStatus = async (req: Request, res: Response) => {
+    let { userId, __status__ } = req.body;
+
+    try {
+        await ownerService.updateOwnerStatus(userId, __status__);
+        res.json({ status: "ok", message: "updated" });
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
+};
 export default {
     createOwner,
     getOwners,
     getOwnerCount,
     updateOwner,
     deactivateOwner,
+    updateOwnerStatus,
 };
