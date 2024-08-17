@@ -12,6 +12,17 @@ const createWorker = async (req: Request, res: Response) => {
     // }
 };
 
+const deactivateWorker = async (req: Request, res: Response) => {
+    let { userId } = req.body;
+
+    try {
+        await workerService.deactivateWorker(userId);
+        res.json({ status: "ok", message: "deactivated" });
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
+};
+
 const getWorkers = async (req: Request, res: Response) => {
     try {
         const workers = await workerService.listWorkers();
@@ -64,4 +75,10 @@ const updateWorker = async (req: Request, res: Response) => {
     }
 };
 
-export default { createWorker, getWorkers, getWorkerCount, updateWorker };
+export default {
+    createWorker,
+    getWorkers,
+    getWorkerCount,
+    updateWorker,
+    deactivateWorker,
+};

@@ -5,6 +5,10 @@ const addWorker = async (userData: IWorker) => {
     return await workerRepository.createWorker(userData);
 };
 
+const deactivateWorker = async (userId: string) => {
+    return await workerRepository.deactivateWorker(userId);
+};
+
 const updateWorker = async (userData: IWorker, userId: string) => {
     return await workerRepository.updateWorker(userData, userId);
 };
@@ -44,4 +48,5 @@ export default {
     containsWorkerWithGivenUsername,
     updatePassword,
     updateWorker,
+    deactivateWorker,
 };

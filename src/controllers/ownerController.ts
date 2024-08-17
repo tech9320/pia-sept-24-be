@@ -45,6 +45,17 @@ const createOwner = async (req: Request, res: Response) => {
     }
 };
 
+const deactivateOwner = async (req: Request, res: Response) => {
+    let { userId } = req.body;
+
+    try {
+        await ownerService.deactivateOwner(userId);
+        res.json({ status: "ok", message: "deactivated" });
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
+};
+
 const getOwners = async (req: Request, res: Response) => {
     try {
         const users = await ownerService.listOwners();
@@ -99,4 +110,10 @@ const updateOwner = async (req: Request, res: Response) => {
     }
 };
 
-export default { createOwner, getOwners, getOwnerCount, updateOwner };
+export default {
+    createOwner,
+    getOwners,
+    getOwnerCount,
+    updateOwner,
+    deactivateOwner,
+};

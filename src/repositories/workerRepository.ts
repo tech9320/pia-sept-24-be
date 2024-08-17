@@ -56,6 +56,15 @@ const updatePassword = async (userId: string, newPassword: string) => {
     return result;
 };
 
+const deactivateWorker = async (userId: string) => {
+    const result = await Worker.updateMany(
+        { _id: userId },
+        { __status__: "deactivated" }
+    );
+
+    return result;
+};
+
 export default {
     createWorker,
     getAllWorkers,
@@ -64,4 +73,5 @@ export default {
     containsOwnerWithGivenUsername,
     updatePassword,
     updateWorker,
+    deactivateWorker,
 };
