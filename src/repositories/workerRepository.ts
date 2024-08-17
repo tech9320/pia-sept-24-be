@@ -2,7 +2,7 @@ import Worker, { IWorker } from "../models/workerModel";
 
 const createWorker = async (data: IWorker) => {
     const worker = new Worker(data);
-    return await worker.save();
+    return worker.save();
 };
 
 const updateWorker = async (data: IWorker, userId: string) => {

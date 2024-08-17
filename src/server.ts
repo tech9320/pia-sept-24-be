@@ -36,6 +36,7 @@ app.get("/worker", workerController.getWorkers);
 app.get("/worker/count", workerController.getWorkerCount);
 app.put("/worker/deactivate", workerController.deactivateWorker);
 app.put("/worker", workerController.updateWorker);
+app.post("/worker", workerController.createWorker);
 app.get("/company", companyController.getCompanies);
 app.get("/login/user", loginController.loginUser);
 app.get("/login/admin", loginController.loginAdmin);

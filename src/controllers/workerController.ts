@@ -4,12 +4,45 @@ import Worker from "../models/workerModel";
 import utils from "../utils";
 
 const createWorker = async (req: Request, res: Response) => {
-    // try {
-    //     const user = await userService.addUser(req.body);
-    //     res.status(201).json(user);
-    // } catch (err) {
-    //     res.status(400).json({ message: err });
-    // }
+    let {
+        username,
+        password,
+        name,
+        surname,
+        gender,
+        address,
+        contactNumber,
+        email,
+        photoBitecode,
+        selectedCompany,
+    } = req.body;
+
+    if (photoBitecode == "") {
+        photoBitecode = utils.encodeImageToBase64(
+            "resources/images/default-avatar.png"
+        );
+    }
+
+    const worker = new Worker({
+        username,
+        password,
+        name,
+        surname,
+        gender,
+        address,
+        contactNumber,
+        email,
+        photoBitecode,
+        company: selectedCompany,
+        __status__: "active",
+    });
+
+    try {
+        await workerService.addWorker(worker);
+        res.json({ status: "ok", message: "saved" });
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
 };
 
 const deactivateWorker = async (req: Request, res: Response) => {
