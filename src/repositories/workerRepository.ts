@@ -32,7 +32,12 @@ const containsOwnerWithGivenUsername = async (username: string) => {
 };
 
 const updatePassword = async (userId: string, newPassword: string) => {
-    return await Worker.updateOne({ _id: userId }, { password: newPassword });
+    const result = await Worker.updateMany(
+        { _id: userId },
+        { password: newPassword }
+    );
+
+    return result;
 };
 
 export default {

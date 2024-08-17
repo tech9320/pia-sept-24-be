@@ -5,7 +5,12 @@ const getAdmin = async (username: string, password: string) => {
 };
 
 const updatePassword = async (userId: string, newPassword: string) => {
-    return await Admin.updateOne({ _id: userId }, { password: newPassword });
+    const result = await Admin.updateMany(
+        { _id: userId },
+        { password: newPassword }
+    );
+
+    return result;
 };
 
 export default { getAdmin, updatePassword };
