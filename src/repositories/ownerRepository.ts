@@ -31,10 +31,20 @@ const containsOwnerWithGivenUsername = async (username: string) => {
     return true;
 };
 
+const updatePassword = async (userId: string, newPassword: string) => {
+    const result = await Owner.updateMany(
+        { _id: userId },
+        { password: newPassword }
+    );
+
+    return result;
+};
+
 export default {
     createOwner,
     getAllOwners,
     getOwner,
     containsOwnerWithGivenEmail,
     containsOwnerWithGivenUsername,
+    updatePassword,
 };

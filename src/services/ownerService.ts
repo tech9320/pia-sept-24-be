@@ -35,6 +35,10 @@ const containsOwnerWithGivenUsername = async (username: string) => {
     return await ownerRepository.containsOwnerWithGivenUsername(username);
 };
 
+const updatePassword = async (userId: string, newPassword: string) => {
+    return await ownerRepository.updatePassword(userId, newPassword);
+};
+
 export default {
     addOwner,
     listOwners,
@@ -42,4 +46,5 @@ export default {
     countActiveOwners,
     containsOwnerWithGivenEmail,
     containsOwnerWithGivenUsername,
+    updatePassword,
 };

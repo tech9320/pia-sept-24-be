@@ -31,10 +31,15 @@ const containsOwnerWithGivenUsername = async (username: string) => {
     return true;
 };
 
+const updatePassword = async (userId: string, newPassword: string) => {
+    return await Worker.updateOne({ _id: userId }, { password: newPassword });
+};
+
 export default {
     createWorker,
     getAllWorkers,
     getWorker,
     containsOwnerWithGivenEmail,
     containsOwnerWithGivenUsername,
+    updatePassword,
 };

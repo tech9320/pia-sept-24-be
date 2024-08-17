@@ -27,6 +27,10 @@ const containsWorkerWithGivenUsername = async (username: string) => {
     return await workerRepository.containsOwnerWithGivenUsername(username);
 };
 
+const updatePassword = async (userId: string, newPassword: string) => {
+    return await workerRepository.updatePassword(userId, newPassword);
+};
+
 export default {
     addWorker,
     listWorkers,
@@ -34,4 +38,5 @@ export default {
     countWorkers,
     containsWorkerWithGivenEmail,
     containsWorkerWithGivenUsername,
+    updatePassword,
 };

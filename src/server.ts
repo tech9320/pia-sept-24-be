@@ -11,6 +11,7 @@ import loginController from "./controllers/loginController";
 import companyController from "./controllers/companyController";
 import workerController from "./controllers/workerController";
 import checkController from "./controllers/checkController";
+import passwordController from "./controllers/passwordController";
 
 const app = express();
 app.use(cors());
@@ -35,6 +36,7 @@ app.get("/login/user", loginController.loginUser);
 app.get("/login/admin", loginController.loginAdmin);
 app.get("/check/email", checkController.checkUniqueForEmail);
 app.get("/check/username", checkController.checkUniqueForUsername);
+app.put("/password/update", passwordController.updatePassword);
 
 // Start server
 app.listen(config.BACKEND_PORT, async () => {
