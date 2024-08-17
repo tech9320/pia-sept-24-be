@@ -5,6 +5,10 @@ const addOwner = async (ownerData: IOwner) => {
     return await ownerRepository.createOwner(ownerData);
 };
 
+const updateOwner = async (ownerData: IOwner, userId: string) => {
+    return await ownerRepository.updateOwner(ownerData, userId);
+};
+
 const listOwners = async () => {
     return await ownerRepository.getAllOwners();
 };
@@ -47,4 +51,5 @@ export default {
     containsOwnerWithGivenEmail,
     containsOwnerWithGivenUsername,
     updatePassword,
+    updateOwner,
 };

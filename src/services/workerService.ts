@@ -5,6 +5,10 @@ const addWorker = async (userData: IWorker) => {
     return await workerRepository.createWorker(userData);
 };
 
+const updateWorker = async (userData: IWorker, userId: string) => {
+    return await workerRepository.updateWorker(userData, userId);
+};
+
 const listWorkers = async () => {
     return await workerRepository.getAllWorkers();
 };
@@ -39,4 +43,5 @@ export default {
     containsWorkerWithGivenEmail,
     containsWorkerWithGivenUsername,
     updatePassword,
+    updateWorker,
 };

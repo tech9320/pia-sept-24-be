@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import workerService from "../services/workerService";
+import Worker from "../models/workerModel";
+import utils from "../utils";
 
 const createWorker = async (req: Request, res: Response) => {
     // try {
@@ -28,4 +30,38 @@ const getWorkerCount = async (req: Request, res: Response) => {
     }
 };
 
-export default { createWorker, getWorkers, getWorkerCount };
+const updateWorker = async (req: Request, res: Response) => {
+    let {
+        name,
+        surname,
+        address,
+        contactNumber,
+        emailAddress,
+        photoBitecode,
+        userId,
+    } = req.body;
+
+    if (photoBitecode == "") {
+        photoBitecode = utils.encodeImageToBase64(
+            "resources/images/default-avatar.png"
+        );
+    }
+
+    const worker = new Worker({
+        name,
+        surname,
+        address,
+        contactNumber,
+        email: emailAddress,
+        photoBitecode,
+    });
+
+    try {
+        await workerService.updateWorker(worker, userId);
+        res.json({ status: "ok", message: "updated" });
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
+};
+
+export default { createWorker, getWorkers, getWorkerCount, updateWorker };

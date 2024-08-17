@@ -63,4 +63,40 @@ const getOwnerCount = async (req: Request, res: Response) => {
     }
 };
 
-export default { createOwner, getOwners, getOwnerCount };
+const updateOwner = async (req: Request, res: Response) => {
+    let {
+        name,
+        surname,
+        address,
+        contactNumber,
+        emailAddress,
+        photoBitecode,
+        cardNumber,
+        userId,
+    } = req.body;
+
+    if (photoBitecode == "") {
+        photoBitecode = utils.encodeImageToBase64(
+            "resources/images/default-avatar.png"
+        );
+    }
+
+    const owner = new Owner({
+        name,
+        surname,
+        address,
+        contactNumber,
+        email: emailAddress,
+        photoBitecode,
+        cardNumber,
+    });
+
+    try {
+        await ownerService.updateOwner(owner, userId);
+        res.json({ status: "ok", message: "updated" });
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
+};
+
+export default { createOwner, getOwners, getOwnerCount, updateOwner };

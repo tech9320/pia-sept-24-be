@@ -29,8 +29,10 @@ mongoose.connection.once("open", async () => {
 app.get("/owner", ownerController.getOwners);
 app.post("/owner", ownerController.createOwner);
 app.get("/owner/count", ownerController.getOwnerCount);
+app.put("/owner", ownerController.updateOwner);
 app.get("/worker", workerController.getWorkers);
 app.get("/worker/count", workerController.getWorkerCount);
+app.put("/worker", workerController.updateWorker);
 app.get("/company", companyController.getCompanies);
 app.get("/login/user", loginController.loginUser);
 app.get("/login/admin", loginController.loginAdmin);

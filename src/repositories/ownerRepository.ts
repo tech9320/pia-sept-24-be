@@ -5,6 +5,23 @@ const createOwner = async (data: IOwner) => {
     return await user.save();
 };
 
+const updateOwner = async (data: IOwner, userId: string) => {
+    const result = await Owner.updateMany(
+        { _id: userId },
+        {
+            name: data.name,
+            surname: data.surname,
+            address: data.address,
+            contactNumber: data.contactNumber,
+            cardNumber: data.cardNumber,
+            email: data.email,
+            photoBitecode: data.photoBitecode,
+        }
+    );
+
+    return result;
+};
+
 const getAllOwners = async () => {
     return await Owner.find({});
 };
@@ -47,4 +64,5 @@ export default {
     containsOwnerWithGivenEmail,
     containsOwnerWithGivenUsername,
     updatePassword,
+    updateOwner,
 };

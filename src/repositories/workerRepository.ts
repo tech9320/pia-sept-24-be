@@ -5,6 +5,22 @@ const createWorker = async (data: IWorker) => {
     return await worker.save();
 };
 
+const updateWorker = async (data: IWorker, userId: string) => {
+    const result = await Worker.updateMany(
+        { _id: userId },
+        {
+            name: data.name,
+            surname: data.surname,
+            address: data.address,
+            contactNumber: data.contactNumber,
+            email: data.email,
+            photoBitecode: data.photoBitecode,
+        }
+    );
+
+    return result;
+};
+
 const getAllWorkers = async () => {
     return await Worker.find({});
 };
@@ -47,4 +63,5 @@ export default {
     containsOwnerWithGivenEmail,
     containsOwnerWithGivenUsername,
     updatePassword,
+    updateWorker,
 };
