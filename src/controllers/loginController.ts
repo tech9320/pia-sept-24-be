@@ -17,7 +17,8 @@ const loginUser = async (req: Request, res: Response) => {
 };
 
 const loginAdmin = async (req: Request, res: Response) => {
-    const { username, password } = req.body;
+    const username = req.query.username;
+    const password = req.query.password;
 
     try {
         const { message, data } = await loginService.loginAdmin(
