@@ -224,6 +224,7 @@ const populateDB = async () => {
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[0].id,
+                __status__: "active",
             },
             {
                 username: "radnikZore2",
@@ -238,6 +239,7 @@ const populateDB = async () => {
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[0].id,
+                __status__: "active",
             },
             {
                 username: "radnikZore3",
@@ -252,6 +254,7 @@ const populateDB = async () => {
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[0].id,
+                __status__: "active",
             },
             {
                 username: "bastovan_12",
@@ -266,6 +269,7 @@ const populateDB = async () => {
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[1].id,
+                __status__: "active",
             },
             {
                 username: "kosac_zbunja",
@@ -280,6 +284,7 @@ const populateDB = async () => {
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[1].id,
+                __status__: "active",
             },
             {
                 username: "d_popovic_12",
@@ -294,6 +299,7 @@ const populateDB = async () => {
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[2].id,
+                __status__: "active",
             },
             {
                 username: "m_simic",
@@ -308,6 +314,7 @@ const populateDB = async () => {
                     "resources/images/default-avatar.png"
                 ),
                 company: companyInsertResult[2].id,
+                __status__: "active",
             },
         ];
 

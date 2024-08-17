@@ -12,6 +12,7 @@ interface IWorker extends Document {
     email: string;
     photoBitecode: string;
     company: ICompany["_id"];
+    __status__: "active" | "deactivated";
 }
 
 const workerSchema: Schema<IWorker> = new Schema({
@@ -25,6 +26,11 @@ const workerSchema: Schema<IWorker> = new Schema({
     email: { type: String, required: true, unique: true },
     photoBitecode: { type: String, required: true },
     company: { type: Schema.Types.ObjectId, ref: "Company", require: true },
+    __status__: {
+        type: String,
+        enum: ["active", "deactivated"],
+        required: true,
+    },
 });
 
 const Worker = model<IWorker>("Worker", workerSchema);

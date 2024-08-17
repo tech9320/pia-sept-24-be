@@ -26,6 +26,7 @@ mongoose.connection.once("open", async () => {
 
 // Routes
 app.get("/owner", ownerController.getOwners);
+app.post("/owner", ownerController.createOwner);
 app.get("/owner/count", ownerController.getOwnerCount);
 app.get("/worker", workerController.getWorkers);
 app.get("/worker/count", workerController.getWorkerCount);

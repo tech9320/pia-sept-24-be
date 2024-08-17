@@ -8,13 +8,13 @@ const loginUser = async (
 ): Promise<{ message: string; data: any }> => {
     const owner = await ownerService.getOwner(username, password);
 
-    if (owner) {
+    if (owner && owner.__status__ == "approved") {
         return { message: "owner", data: owner };
     }
 
     const worker = await workerService.getWorker(username, password);
 
-    if (worker) {
+    if (worker && worker.__status__ == "active") {
         return { message: "worker", data: worker };
     }
 

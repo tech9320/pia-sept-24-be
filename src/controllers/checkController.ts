@@ -8,7 +8,7 @@ const checkUniqueForEmail = async (req: Request, res: Response) => {
         const { unique } = await checkService.checkUniqueForEmail(email);
         res.json({ message: "ok", unique: unique });
     } catch (err) {
-        res.json({ message: "error", unique: false });
+        res.json({ message: "error", unique: err });
     }
 };
 
@@ -19,7 +19,7 @@ const checkUniqueForUsername = async (req: Request, res: Response) => {
         const { unique } = await checkService.checkUniqueForUsername(username);
         res.json({ message: "ok", unique: unique });
     } catch (err) {
-        res.json({ message: "error", unique: false });
+        res.json({ message: "error", unique: err });
     }
 };
 

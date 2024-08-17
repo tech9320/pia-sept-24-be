@@ -1,13 +1,48 @@
 import { Request, Response } from "express";
 import ownerService from "../services/ownerService";
+import utils from "../utils";
+import Owner from "../models/ownerModel";
 
 const createOwner = async (req: Request, res: Response) => {
-    // try {
-    //     const user = await userService.addUser(req.body);
-    //     res.status(201).json(user);
-    // } catch (err) {
-    //     res.status(400).json({ message: err });
-    // }
+    let {
+        username,
+        password,
+        name,
+        surname,
+        gender,
+        address,
+        contactNumber,
+        email,
+        photoBitecode,
+        cardNumber,
+    } = req.body;
+
+    if (photoBitecode == "") {
+        photoBitecode = utils.encodeImageToBase64(
+            "resources/images/default-avatar.png"
+        );
+    }
+
+    const owner = new Owner({
+        username,
+        password,
+        name,
+        surname,
+        gender,
+        address,
+        contactNumber,
+        email,
+        photoBitecode,
+        cardNumber,
+        __status__: "awaiting",
+    });
+
+    try {
+        await ownerService.addOwner(owner);
+        res.json({ status: "ok", message: "saved" });
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
 };
 
 const getOwners = async (req: Request, res: Response) => {
