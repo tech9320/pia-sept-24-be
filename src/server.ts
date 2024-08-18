@@ -10,6 +10,8 @@ import companyController from "./controllers/companyController";
 import workerController from "./controllers/workerController";
 import checkController from "./controllers/checkController";
 import passwordController from "./controllers/passwordController";
+import requestController from "./controllers/requestController";
+import maintenanceController from "./controllers/maintenanceController";
 
 const app = express();
 app.use(cors());
@@ -41,6 +43,8 @@ app.get("/login/admin", loginController.loginAdmin);
 app.get("/check/email", checkController.checkUniqueForEmail);
 app.get("/check/username", checkController.checkUniqueForUsername);
 app.put("/password/update", passwordController.updatePassword);
+app.get("/request", requestController.getRequests);
+app.get("/maintenance", maintenanceController.getMainenances);
 
 // Start server
 app.listen(4000, async () => {
