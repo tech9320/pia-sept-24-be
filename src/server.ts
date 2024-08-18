@@ -1,8 +1,6 @@
 import express from "express";
 import cors from "cors";
 
-import config from "./config/env.config";
-
 import connectDB from "./config/database.config";
 import populateDB from "./data/populateDB";
 import mongoose from "mongoose";
@@ -45,6 +43,6 @@ app.get("/check/username", checkController.checkUniqueForUsername);
 app.put("/password/update", passwordController.updatePassword);
 
 // Start server
-app.listen(config.BACKEND_PORT, async () => {
-    console.log(`Backend server running on port ${config.BACKEND_PORT}`);
+app.listen(4000, async () => {
+    console.log(`Backend server running on port ${4000}`);
 });

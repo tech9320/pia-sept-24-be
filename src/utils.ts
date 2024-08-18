@@ -1,6 +1,5 @@
 import { createHash, randomBytes, pbkdf2Sync } from "crypto";
 import fs from "fs";
-import config from "./config/env.config";
 
 const hashPassword = (password: string): string => {
     const hash = createHash("sha256").update(password).digest("hex");
