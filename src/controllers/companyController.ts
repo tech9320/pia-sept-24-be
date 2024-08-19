@@ -19,4 +19,19 @@ const getCompanies = async (req: Request, res: Response) => {
     }
 };
 
-export default { createCompany, getCompanies };
+const isAnyWorkerAvailable = async (req: Request, res: Response) => {
+    const companyId = req.query.companyId;
+    const date = new Date(req.query.date as string);
+
+    try {
+        const result = await companyService.isAnyWorkerAvailable(
+            companyId,
+            date
+        );
+        res.json({ message: "ok", data: result });
+    } catch (err) {
+        res.json({ message: "error", data: err });
+    }
+};
+
+export default { createCompany, getCompanies, isAnyWorkerAvailable };

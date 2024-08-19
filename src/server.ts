@@ -22,7 +22,7 @@ connectDB();
 
 // Populate database once connection is established
 mongoose.connection.once("open", async () => {
-    await populateDB();
+    // await populateDB();
 });
 
 // Routes
@@ -38,12 +38,14 @@ app.put("/worker/deactivate", workerController.deactivateWorker);
 app.put("/worker", workerController.updateWorker);
 app.post("/worker", workerController.createWorker);
 app.get("/company", companyController.getCompanies);
+app.get("/company/worker-availability", companyController.isAnyWorkerAvailable);
 app.get("/login/user", loginController.loginUser);
 app.get("/login/admin", loginController.loginAdmin);
 app.get("/check/email", checkController.checkUniqueForEmail);
 app.get("/check/username", checkController.checkUniqueForUsername);
 app.put("/password/update", passwordController.updatePassword);
 app.get("/request", requestController.getRequests);
+app.post("/request", requestController.createRequest);
 app.get("/maintenance", maintenanceController.getMainenances);
 
 // Start server

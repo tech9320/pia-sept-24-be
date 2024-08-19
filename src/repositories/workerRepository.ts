@@ -25,6 +25,10 @@ const getAllWorkers = async () => {
     return await Worker.find({});
 };
 
+const getAllWorkersOfCompany = async (companyId: string) => {
+    return await Worker.find({ company: companyId });
+};
+
 const getWorker = async (username: string, password: string) => {
     return await Worker.findOne({ username: username, password: password });
 };
@@ -74,4 +78,5 @@ export default {
     updatePassword,
     updateWorker,
     deactivateWorker,
+    getAllWorkersOfCompany,
 };

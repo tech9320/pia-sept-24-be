@@ -4,4 +4,11 @@ const listMainenances = async () => {
     return await maintenanceRepository.getAllMainenances();
 };
 
-export default { listMainenances };
+const isWorkerWorkingOnGivenDate = async (workerId: any, date: any) => {
+    return await maintenanceRepository.isWorkerWorkingOnGivenDate(
+        workerId,
+        date
+    );
+};
+
+export default { listMainenances, isWorkerWorkingOnGivenDate };

@@ -6,7 +6,9 @@ const createCompany = async (data: ICompany) => {
 };
 
 const getAllCompanies = async () => {
-    return await Company.find({});
+    const result = await Company.find({});
+
+    return result;
 };
 
 const getCompany = async (id: string) => {

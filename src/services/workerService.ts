@@ -17,6 +17,10 @@ const listWorkers = async () => {
     return await workerRepository.getAllWorkers();
 };
 
+const listWorkersOfCompany = async (companyId: string) => {
+    return await workerRepository.getAllWorkersOfCompany(companyId);
+};
+
 const getWorker = async (username: string, password: string) => {
     return await workerRepository.getWorker(username, password);
 };
@@ -49,4 +53,5 @@ export default {
     updatePassword,
     updateWorker,
     deactivateWorker,
+    listWorkersOfCompany,
 };

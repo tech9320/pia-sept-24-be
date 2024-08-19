@@ -47,7 +47,7 @@ const requestSchema: Schema<IRequest> = new Schema({
     lastMaintenanceAt: { type: Date, required: true },
 });
 
-const Request = model<IRequest>("Request", requestSchema);
+const RequestM = model<IRequest>("Request", requestSchema);
 
-export default Request;
+export default RequestM;
 export { IRequest };
