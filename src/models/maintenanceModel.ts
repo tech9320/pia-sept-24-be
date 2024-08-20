@@ -8,6 +8,7 @@ interface IMaintenance extends Document {
     workerId?: IWorker["_id"];
     companyId: ICompany["_id"];
     completedAt: Date;
+    __status__: "waiting" | "approved" | "rejected";
 }
 
 const maintenanceSchema: Schema<IMaintenance> = new Schema({
@@ -15,6 +16,11 @@ const maintenanceSchema: Schema<IMaintenance> = new Schema({
     companyId: { type: Schema.Types.ObjectId, ref: "Company", require: true },
     workerId: { type: Schema.Types.ObjectId, ref: "Worker" },
     completedAt: { type: Date, required: true },
+    __status__: {
+        type: String,
+        enum: ["waiting", "approved", "rejected"],
+        required: true,
+    },
 });
 
 const Maintenance = model<IMaintenance>("Maintenance", maintenanceSchema);

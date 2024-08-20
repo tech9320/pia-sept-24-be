@@ -23,6 +23,7 @@ interface IRequest extends Document {
     createdAt: Date;
     requestCompletedAt: Date;
     lastMaintenanceAt: Date;
+    __status__: "waiting" | "approved" | "rejected";
 }
 
 const requestSchema: Schema<IRequest> = new Schema({
@@ -44,7 +45,12 @@ const requestSchema: Schema<IRequest> = new Schema({
     ],
     createdAt: { type: Date, required: true },
     requestCompletedAt: { type: Date, required: true },
-    lastMaintenanceAt: { type: Date, required: true },
+    lastMaintenanceAt: { type: Date },
+    __status__: {
+        type: String,
+        enum: ["waiting", "approved", "rejected"],
+        required: true,
+    },
 });
 
 const RequestM = model<IRequest>("Request", requestSchema);

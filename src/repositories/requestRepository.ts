@@ -22,4 +22,22 @@ const createRequest = async (requestData: IRequest) => {
     return request.save();
 };
 
-export default { getAllRequests, isWorkerWorkingOnGivenDate, createRequest };
+const updateRequestStatus = async (
+    requestId: string,
+    workerId: string,
+    __status__: string
+) => {
+    const result = await RequestM.updateMany(
+        { _id: requestId },
+        { workerId: workerId, __status__: __status__ }
+    );
+
+    return result;
+};
+
+export default {
+    getAllRequests,
+    isWorkerWorkingOnGivenDate,
+    createRequest,
+    updateRequestStatus,
+};

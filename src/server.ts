@@ -45,6 +45,7 @@ app.get("/check/email", checkController.checkUniqueForEmail);
 app.get("/check/username", checkController.checkUniqueForUsername);
 app.put("/password/update", passwordController.updatePassword);
 app.get("/request", requestController.getRequests);
+app.put("/request/status", requestController.updateRequestStatus);
 app.post("/request", requestController.createRequest);
 app.get("/maintenance", maintenanceController.getMainenances);
 

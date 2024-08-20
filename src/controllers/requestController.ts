@@ -18,6 +18,7 @@ const createRequest = async (req: Request, res: Response) => {
         createdAt,
         requestCompletedAt,
         lastMaintenanceAt,
+        __status__,
     } = req.body;
 
     const request = new RequestM({
@@ -35,6 +36,7 @@ const createRequest = async (req: Request, res: Response) => {
         createdAt,
         requestCompletedAt,
         lastMaintenanceAt,
+        __status__,
     });
 
     try {
@@ -54,4 +56,19 @@ const getRequests = async (req: Request, res: Response) => {
     }
 };
 
-export default { getRequests, createRequest };
+const updateRequestStatus = async (req: Request, res: Response) => {
+    let { requestId, workerId, __status__ } = req.body;
+
+    try {
+        await requestService.updateRequestStatus(
+            requestId,
+            workerId,
+            __status__
+        );
+        res.json({ status: "ok", message: "updated" });
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
+};
+
+export default { getRequests, createRequest, updateRequestStatus };
