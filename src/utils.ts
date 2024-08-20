@@ -34,4 +34,18 @@ const getSerbianTime = (
     return serbianDate;
 };
 
-export default { hashPassword, encodeImageToBase64, getSerbianTime };
+const addDaysToDate = (date: Date, days: number): Date => {
+    return new Date(date.setDate(date.getDate() + days));
+};
+
+const substractDaysToDate = (date: Date, days: number): Date => {
+    return new Date(date.setDate(date.getDate() - days));
+};
+
+export default {
+    hashPassword,
+    encodeImageToBase64,
+    getSerbianTime,
+    addDaysToDate,
+    substractDaysToDate,
+};

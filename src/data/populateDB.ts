@@ -6,6 +6,9 @@ import Owner from "../models/ownerModel";
 import Company from "../models/companyModel";
 import Worker from "../models/workerModel";
 import Admin from "../models/adminModel";
+import RequestM from "../models/requestModel";
+import { unescape } from "querystring";
+import Maintenance from "../models/maintenanceModel";
 
 const populateDB = async () => {
     try {
@@ -116,7 +119,7 @@ const populateDB = async () => {
             },
         ];
 
-        await Owner.insertMany(intialOwners);
+        const ownerInsertResult = await Owner.insertMany(intialOwners);
 
         // Initialize companies
         const initialCompanies = [
@@ -318,7 +321,142 @@ const populateDB = async () => {
             },
         ];
 
-        await Worker.insertMany(initialWorkers);
+        const workerInsertResult = await Worker.insertMany(initialWorkers);
+
+        const initialRequests = [
+            {
+                ownerId: ownerInsertResult[0].id,
+                companyId: companyInsertResult[0].id,
+                workerId: undefined,
+                gardenType: "P",
+                gardenArea: 3,
+                greenArea: 1,
+                poolArea: 1,
+                fountainArea: undefined,
+                furnitureArea: 1,
+                furnitureNumber: undefined,
+                selectedServices: companyInsertResult[0].services.slice(0, 2),
+                createdAt: new Date(),
+                requestCompletedAt: utils.addDaysToDate(new Date(), 10),
+                lastMaintenanceAt: undefined,
+                __status__: "waiting",
+            },
+            {
+                ownerId: ownerInsertResult[0].id,
+                companyId: companyInsertResult[1].id,
+                workerId: undefined,
+                gardenType: "R",
+                gardenArea: 4,
+                greenArea: 2,
+                poolArea: undefined,
+                fountainArea: 2,
+                furnitureArea: undefined,
+                furnitureNumber: 10,
+                selectedServices: companyInsertResult[1].services.slice(0, 1),
+                createdAt: new Date(),
+                requestCompletedAt: utils.addDaysToDate(new Date(), 30),
+                lastMaintenanceAt: undefined,
+                __status__: "rejected",
+            },
+            {
+                ownerId: ownerInsertResult[0].id,
+                companyId: companyInsertResult[0].id,
+                workerId: workerInsertResult[0].id,
+                gardenType: "P",
+                gardenArea: 4,
+                greenArea: 2,
+                poolArea: 1,
+                fountainArea: undefined,
+                furnitureArea: 1,
+                furnitureNumber: undefined,
+                selectedServices: companyInsertResult[0].services.slice(0, 2),
+                createdAt: new Date(),
+                requestCompletedAt: utils.addDaysToDate(new Date(), 30),
+                lastMaintenanceAt: utils.addDaysToDate(new Date(), 30),
+                __status__: "approved",
+            },
+            {
+                ownerId: ownerInsertResult[2].id,
+                companyId: companyInsertResult[2].id,
+                workerId: workerInsertResult[1].id,
+                gardenType: "R",
+                gardenArea: 4,
+                greenArea: 2,
+                poolArea: undefined,
+                fountainArea: 2,
+                furnitureArea: undefined,
+                furnitureNumber: 12,
+                selectedServices: companyInsertResult[2].services.slice(0, 2),
+                createdAt: utils.substractDaysToDate(new Date(), 10),
+                requestCompletedAt: utils.substractDaysToDate(new Date(), 5),
+                lastMaintenanceAt: utils.substractDaysToDate(new Date(), 5),
+                __status__: "approved",
+            },
+            {
+                ownerId: ownerInsertResult[0].id,
+                companyId: companyInsertResult[0].id,
+                workerId: workerInsertResult[1].id,
+                gardenType: "P",
+                gardenArea: 4,
+                greenArea: 2,
+                poolArea: 1,
+                fountainArea: undefined,
+                furnitureArea: 1,
+                furnitureNumber: undefined,
+                selectedServices: companyInsertResult[1].services.slice(0, 2),
+                createdAt: utils.substractDaysToDate(new Date(), 25),
+                requestCompletedAt: utils.substractDaysToDate(new Date(), 20),
+                lastMaintenanceAt: utils.substractDaysToDate(new Date(), 10),
+                __status__: "approved",
+            },
+            {
+                ownerId: ownerInsertResult[0].id,
+                companyId: companyInsertResult[2].id,
+                workerId: workerInsertResult[3].id,
+                gardenType: "R",
+                gardenArea: 6,
+                greenArea: 3,
+                poolArea: undefined,
+                fountainArea: 3,
+                furnitureArea: undefined,
+                furnitureNumber: 20,
+                selectedServices: companyInsertResult[2].services.slice(0, 2),
+                createdAt: utils.substractDaysToDate(new Date(), 220),
+                requestCompletedAt: utils.substractDaysToDate(new Date(), 200),
+                lastMaintenanceAt: utils.substractDaysToDate(new Date(), 200),
+                __status__: "approved",
+            },
+        ];
+
+        const requestsInsertResult = await RequestM.insertMany(initialRequests);
+
+        const initialMaintenances = [
+            {
+                requestId: requestsInsertResult[4].id,
+                workerId: undefined,
+                companyId: companyInsertResult[0].id,
+                completedAt: undefined,
+                __status__: "rejected",
+            },
+            {
+                requestId: requestsInsertResult[4].id,
+                workerId: workerInsertResult[1].id,
+                companyId: companyInsertResult[0].id,
+                completedAt: utils.addDaysToDate(new Date(), 10),
+                __status__: "approved",
+            },
+            {
+                requestId: requestsInsertResult[4].id,
+                workerId: undefined,
+                companyId: companyInsertResult[0].id,
+                completedAt: undefined,
+                __status__: "waiting",
+            },
+        ];
+
+        const maintenancesInsertionResult = await Maintenance.insertMany(
+            initialMaintenances
+        );
 
         console.log("Database initialized");
     } catch (err) {

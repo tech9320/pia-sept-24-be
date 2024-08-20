@@ -27,9 +27,15 @@ const updateRequestStatus = async (
     workerId: string,
     __status__: string
 ) => {
+    const request: any = await RequestM.findById(requestId);
+
     const result = await RequestM.updateMany(
         { _id: requestId },
-        { workerId: workerId, __status__: __status__ }
+        {
+            workerId: workerId,
+            __status__: __status__,
+            lastMaintenanceAt: request.requestCompletedAt,
+        }
     );
 
     return result;

@@ -48,6 +48,7 @@ app.get("/request", requestController.getRequests);
 app.put("/request/status", requestController.updateRequestStatus);
 app.post("/request", requestController.createRequest);
 app.get("/maintenance", maintenanceController.getMainenances);
+app.post("/maintenance", maintenanceController.requestMaintenance);
 
 // Start server
 app.listen(4000, async () => {
