@@ -2,12 +2,30 @@ import { Request, Response } from "express";
 import companyService from "../services/companyService";
 
 const createCompany = async (req: Request, res: Response) => {
-    // try {
-    //     const user = await userService.addUser(req.body);
-    //     res.status(201).json(user);
-    // } catch (err) {
-    //     res.status(400).json({ message: err });
-    // }
+    let {
+        name,
+        address,
+        services,
+        contactNumber,
+        mapCoordinates,
+        vacationPeriod,
+    } = req.body;
+
+    try {
+        const company = await companyService.addCompany(
+            name,
+            address,
+            services,
+            contactNumber,
+            mapCoordinates,
+            vacationPeriod
+        );
+        console.log(company);
+
+        res.json({ message: "ok", data: company });
+    } catch (err) {
+        res.json({ message: "error", data: err });
+    }
 };
 
 const getCompanies = async (req: Request, res: Response) => {

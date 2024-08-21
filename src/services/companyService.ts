@@ -4,8 +4,22 @@ import maintenanceService from "./maintenanceService";
 import requestService from "./requestService";
 import workerService from "./workerService";
 
-const addCompany = async (companyData: ICompany) => {
-    return await companyRepository.createCompany(companyData);
+const addCompany = async (
+    name: string,
+    address: string,
+    services: any,
+    contactNumber: string,
+    mapCoordinates: any,
+    vacationPeriod: any
+) => {
+    return await companyRepository.createCompany(
+        name,
+        address,
+        services,
+        contactNumber,
+        mapCoordinates,
+        vacationPeriod
+    );
 };
 
 const listCompanies = async () => {

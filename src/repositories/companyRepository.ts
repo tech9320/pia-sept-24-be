@@ -1,8 +1,23 @@
-import Company, { ICompany } from "../models/companyModel";
+import Company from "../models/companyModel";
 
-const createCompany = async (data: ICompany) => {
-    const user = new Company(data);
-    return await user.save();
+const createCompany = async (
+    name: string,
+    address: string,
+    services: any,
+    contactNumber: string,
+    mapCoordinates: any,
+    vacationPeriod: any
+) => {
+    const company = new Company({
+        name: name,
+        address: address,
+        services: services.services,
+        contactNumber: contactNumber,
+        mapCoordinates: mapCoordinates.coordinates,
+        vacationPeriod: vacationPeriod,
+    });
+
+    return await company.save();
 };
 
 const getAllCompanies = async () => {

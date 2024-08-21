@@ -38,6 +38,7 @@ app.put("/worker/deactivate", workerController.deactivateWorker);
 app.put("/worker", workerController.updateWorker);
 app.post("/worker", workerController.createWorker);
 app.get("/company", companyController.getCompanies);
+app.post("/company", companyController.createCompany);
 app.get("/company/worker-availability", companyController.isAnyWorkerAvailable);
 app.get("/login/user", loginController.loginUser);
 app.get("/login/admin", loginController.loginAdmin);
