@@ -20,7 +20,6 @@ const createCompany = async (req: Request, res: Response) => {
             mapCoordinates,
             vacationPeriod
         );
-        console.log(company);
 
         res.json({ message: "ok", data: company });
     } catch (err) {
