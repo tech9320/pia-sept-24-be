@@ -22,7 +22,7 @@ connectDB();
 
 // Populate database once connection is established
 mongoose.connection.once("open", async () => {
-    // await populateDB();
+    await populateDB();
 });
 
 // Routes
@@ -49,6 +49,7 @@ app.put("/request/status", requestController.updateRequestStatus);
 app.post("/request", requestController.createRequest);
 app.get("/maintenance", maintenanceController.getMainenances);
 app.post("/maintenance", maintenanceController.requestMaintenance);
+app.put("/maintenance", maintenanceController.updateMaintenance);
 
 // Start server
 app.listen(4000, async () => {

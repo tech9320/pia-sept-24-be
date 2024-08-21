@@ -14,7 +14,7 @@ const requestMaintenance = async (req: Request, res: Response) => {
     let { requestId, companyId, __status__ } = req.body;
 
     try {
-        await maintenanceService.aggMaintenance(
+        await maintenanceService.addMaintenance(
             requestId,
             companyId,
             __status__
@@ -25,4 +25,21 @@ const requestMaintenance = async (req: Request, res: Response) => {
     }
 };
 
-export default { getMainenances, requestMaintenance };
+const updateMaintenance = async (req: Request, res: Response) => {
+    let { requestId, maintenanceId, workerId, __status__, date } = req.body;
+
+    try {
+        await maintenanceService.updateMaintenances(
+            requestId,
+            maintenanceId,
+            workerId,
+            __status__,
+            date
+        );
+        res.json({ status: "ok", message: "saved" });
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
+};
+
+export default { getMainenances, requestMaintenance, updateMaintenance };

@@ -11,7 +11,7 @@ const isWorkerWorkingOnGivenDate = async (workerId: any, date: any) => {
     );
 };
 
-const aggMaintenance = async (
+const addMaintenance = async (
     requestId: string,
     companyId: string,
     __status__: string
@@ -23,8 +23,25 @@ const aggMaintenance = async (
     );
 };
 
+const updateMaintenances = async (
+    requestId: string,
+    maintenanceId: string,
+    workerId: string,
+    __status__: string,
+    date: string
+) => {
+    return await maintenanceRepository.updateMaintenances(
+        requestId,
+        maintenanceId,
+        workerId,
+        __status__,
+        date
+    );
+};
+
 export default {
     listMainenances,
     isWorkerWorkingOnGivenDate,
-    aggMaintenance,
+    addMaintenance,
+    updateMaintenances,
 };
