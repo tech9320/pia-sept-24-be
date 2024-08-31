@@ -5,7 +5,6 @@ const createCompany = async (
     address: string,
     services: any,
     contactNumber: string,
-    mapCoordinates: any,
     vacationPeriod: any
 ) => {
     const company = new Company({
@@ -13,7 +12,6 @@ const createCompany = async (
         address: address,
         services: services.services,
         contactNumber: contactNumber,
-        mapCoordinates: mapCoordinates.coordinates,
         vacationPeriod: vacationPeriod,
     });
 

@@ -2,14 +2,7 @@ import { Request, Response } from "express";
 import companyService from "../services/companyService";
 
 const createCompany = async (req: Request, res: Response) => {
-    let {
-        name,
-        address,
-        services,
-        contactNumber,
-        mapCoordinates,
-        vacationPeriod,
-    } = req.body;
+    let { name, address, services, contactNumber, vacationPeriod } = req.body;
 
     try {
         const company = await companyService.addCompany(
@@ -17,7 +10,6 @@ const createCompany = async (req: Request, res: Response) => {
             address,
             services,
             contactNumber,
-            mapCoordinates,
             vacationPeriod
         );
 

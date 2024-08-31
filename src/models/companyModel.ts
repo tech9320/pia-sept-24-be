@@ -10,17 +10,11 @@ type Service = {
     servicePrice: number;
 };
 
-type MapCoordinates = {
-    x: number;
-    y: number;
-};
-
 interface ICompany extends Document {
     name: string;
     address: string;
     services: Service[];
     contactNumber: string;
-    mapCoordinates: MapCoordinates;
     vacationPeriod: VacationPeriod;
 }
 
@@ -34,10 +28,6 @@ const companySchema: Schema<ICompany> = new Schema({
         },
     ],
     contactNumber: { type: String, required: true },
-    mapCoordinates: {
-        x: { type: Number, required: true },
-        y: { type: Number, required: true },
-    },
     vacationPeriod: {
         start: { type: Date, required: true },
         end: { type: Date, required: true },

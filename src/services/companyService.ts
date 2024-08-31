@@ -9,7 +9,6 @@ const addCompany = async (
     address: string,
     services: any,
     contactNumber: string,
-    mapCoordinates: any,
     vacationPeriod: any
 ) => {
     return await companyRepository.createCompany(
@@ -17,7 +16,6 @@ const addCompany = async (
         address,
         services,
         contactNumber,
-        mapCoordinates,
         vacationPeriod
     );
 };

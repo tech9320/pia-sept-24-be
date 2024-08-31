@@ -176,10 +176,6 @@ const populateDB = async () => {
                     },
                 ],
                 contactNumber: "+381 231 242 2135",
-                mapCoordinates: {
-                    x: 45.29741101148167,
-                    y: 19.83107748495156,
-                },
                 vacationPeriod: {
                     start: utils.getSerbianTime(2024, 8, 1, 8, 0, 0),
                     end: utils.getSerbianTime(2024, 8, 25, 8, 0, 0),
@@ -199,10 +195,6 @@ const populateDB = async () => {
                     },
                 ],
                 contactNumber: "+381 300 400 5050",
-                mapCoordinates: {
-                    x: 44.82690893796957,
-                    y: 20.38300074120722,
-                },
                 vacationPeriod: {
                     start: utils.getSerbianTime(2024, 8, 1, 8, 0, 0),
                     end: utils.getSerbianTime(2024, 8, 25, 8, 0, 0),
