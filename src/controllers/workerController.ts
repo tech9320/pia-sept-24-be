@@ -80,7 +80,7 @@ const updateWorker = async (req: Request, res: Response) => {
         surname,
         address,
         contactNumber,
-        emailAddress,
+        email,
         photoBitecode,
         userId,
     } = req.body;
@@ -96,7 +96,7 @@ const updateWorker = async (req: Request, res: Response) => {
         surname,
         address,
         contactNumber,
-        email: emailAddress,
+        email,
         photoBitecode,
     });
 

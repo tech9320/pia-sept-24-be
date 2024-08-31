@@ -80,7 +80,7 @@ const updateOwner = async (req: Request, res: Response) => {
         surname,
         address,
         contactNumber,
-        emailAddress,
+        email,
         photoBitecode,
         cardNumber,
         userId,
@@ -97,7 +97,7 @@ const updateOwner = async (req: Request, res: Response) => {
         surname,
         address,
         contactNumber,
-        email: emailAddress,
+        email: email,
         photoBitecode,
         cardNumber,
     });
